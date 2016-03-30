@@ -1,6 +1,6 @@
 ## Projeto criado em curso
 
-Ao fazer download do projeto que se encontra no estado atual, você deve observar atentamente à duas coisas.  
+Ao fazer o download do projeto que se encontra no estado atual, você deve observar atentamente à duas coisas.  
 
 1 Rodar o comando ``` npm install ``` no diretório raíz do projeto.  
 
