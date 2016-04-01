@@ -23,7 +23,7 @@ app.use(express.static('public'));
 
 load('models', {cwd:'app'})
 .then('services')
-.then('respository')
+.then('controllers')
 .then('routes')
 .into(app);
 // catch 404 and forward to error handler

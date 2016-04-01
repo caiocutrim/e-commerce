@@ -17,5 +17,10 @@
     "mongoose": "^4.4.10",
     "morgan": "~1.6.1",
     "serve-favicon": "~2.3.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha-mongoose": "^1.2.0",
+    "supertest": "^1.2.0"
   }
 }
