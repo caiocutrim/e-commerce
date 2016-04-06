@@ -2,6 +2,7 @@
 const express = require('express');
 const favicon = require('serve-favicon');
 const morgan = require('morgan');
+const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
 const load = require('express-load');
 const engine = require('ejs-mate');
@@ -16,9 +17,11 @@ app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+// middleware stack
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(methodOverride());
 app.use(express.static('public'));
 
 load('models', {cwd:'app'})

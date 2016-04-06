@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "nodemon ./bin/www"
+    "dev": "NODE_ENV=development nodemon ./bin/www",
+    "server-test": "NODE_ENV=test nodemon ./bin/www",
+    "tests": "NODE_ENV=test nodemon ./bin/www | NODE_ENV=test mocha app/tests/**/** --watch"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
@@ -13,6 +15,7 @@
     "ejs-mate": "^2.3.0",
     "express": "~4.13.1",
     "express-load": "^1.1.15",
+    "method-override": "^2.3.5",
     "mongodb": "^2.1.13",
     "mongoose": "^4.4.10",
     "morgan": "~1.6.1",
@@ -21,6 +24,7 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "mocha-mongoose": "^1.2.0",
-    "supertest": "^1.2.0"
+    "supertest": "^1.2.0",
+    "supertest-as-promised": "^3.1.0"
   }
 }

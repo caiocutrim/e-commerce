@@ -7,9 +7,12 @@
  */
 
 const app = require('../configurations/express');
+const env = require('../configurations/envs')();
 const debug = require('debug')('e-commerce-blue-dev:server');
 const http = require('http');
-const db = require('../configurations/database')('mongodb://localhost/e-commerce-test');
+const db = require('../configurations/database')(env.dbURI);
+
+console.log(`env variable is ${process.env.NODE_ENV}`);
 /**
  * Get port from environment and store in Express.
  */

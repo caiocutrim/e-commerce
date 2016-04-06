@@ -10,5 +10,10 @@ module.exports = () => {
     'password':String
   });
 
-  return mongoose.model('Client', schema);
+  // workaround
+  try {
+    return mongoose.model('Client');
+  }catch (err) {
+    return mongoose.model('Client', schema);
+  }
 };
