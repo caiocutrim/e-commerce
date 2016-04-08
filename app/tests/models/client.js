@@ -13,25 +13,25 @@ describe('#CLIENT', () => {
   });
 
   it('should be saved', (done) => {
-    Client({'username':'John Doe'})
+    Client({'name':'John Doe'})
     .save(done)
     .then((result) => {
-      expect(result.username).should.be.equal('John Doe');
+      expect(result.name).should.be.equal('John Doe');
     });
   });
 
   it('should be listed', (done) => {
-    Client({'username': 'John Doe'}).save();
+    Client({'name': 'John Doe'}).save();
     Client.find({})
      .exec(done)
      .then((result) => {
-       expect(result.username).should.be.equal('John Doe');
+       expect(result.name).should.be.equal('John Doe');
      });
   });
 
   it('should be updated', (done) => {
-    Client({'username': 'John Doe'}).save();
-    Client.update({'username': 'John Doe'}, {'username': 'Jack Sparrow'})
+    Client({'name': 'John Doe'}).save();
+    Client.update({'name': 'John Doe'}, {'name': 'Jack Sparrow'})
       .exec(done)
       .then((result) => {
         expect(result.ok).should.to.be.equal(1); // true
@@ -39,8 +39,8 @@ describe('#CLIENT', () => {
   });
 
   it('should be removed', (done) => {
-    Client({'username': 'John Doe'}).save();
-    Client.remove({'username': 'John Doe'})
+    Client({'name': 'John Doe'}).save();
+    Client.remove({'name': 'John Doe'})
     .exec(done)
     .then((result) => {
       expect(result.ok).should.to.be.equal(1); // true

@@ -5,12 +5,13 @@
 module.exports = (app) => {
   let controller = app.controllers.client;
   app
-    .route('/api/client')
+    .route('/api/clients')
     .get(controller.listClients)
     .post(controller.addClient);
 
   app
-    .route('/api/client/:id')
+    .route('/api/clients/:id')
     .put(controller.changeClientData)
+    .get(controller.showDataClient)
     .delete(controller.deleteClientData);
 };

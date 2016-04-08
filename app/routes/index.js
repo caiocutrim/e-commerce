@@ -1,7 +1,7 @@
 'use strict';
-
 module.exports = (app) => {
-  app.get('/', (req, res) => {
-    res.render('pages/index');
-  });
+  let ctrl = app.controllers.product;
+  app.route('/api/products')
+    .get(ctrl.listProductData)
+    .post(ctrl.saveProductData);
 };

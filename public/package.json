@@ -4,8 +4,9 @@
   "description": "project front-end",
   "main": "index.js",
   "scripts": {
+    "start": "npm install && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "watchify js/main.js -o js/bundle.js"
+    "build": "browserify js/main.js | uglifyjs -o js/bundle.js"
   },
   "author": "Caio Cutrim",
   "license": "ISC",
