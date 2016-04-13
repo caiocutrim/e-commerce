@@ -12,8 +12,8 @@ describe("#ROUTES client", () => {
     if (mongoose.connection.db) return done();
     mongoose.connect(env.dbURI, done);
   });
-  let dataMock = {'name': 'John doe', 'email': 'john@example.com', 'password': '12345'};
-  let dataMockUp = {'name': 'Jack doe', 'email': 'jack@example.com', 'password': '1234798'};
+  let dataMock = {'username': 'John doe', 'email': 'john@example.com', 'password': '12345'};
+  let dataMockUp = {'username': 'Jack doe', 'email': 'jack@example.com', 'password': '1234798'};
   it('expect 200 status to be received when a client is saved', done => {
     app
     .post('/api/clients')
@@ -21,9 +21,9 @@ describe("#ROUTES client", () => {
     .send(dataMock)
     .expect(200)
     .then(result => {
-      expect(result.body.name).to.be.equal(dataMock.name);
+      console.log(result.body.hash);
+      expect(result.body.username).to.be.equal(dataMock.username);
       expect(result.body.email).to.be.equal(dataMock.email);
-      expect(result.body.password).to.be.equal(dataMock.password);
       done();
     });
   });
@@ -57,9 +57,24 @@ describe("#ROUTES client", () => {
       .send(dataMockUp)
       .expect(200)
       .then(response => {
-        console.log(response);
         expect(response.status).to.be.equal(200); // response.status
+        done();
       });
+    });
+  });
+  it('expect 200 when a client is authenticate', done => {
+    app
+    .post('/api/clients/login')
+    .type('json')
+    .expect(401)
+    .send(dataMock)
+    .then(result => {
+      console.log(result.text);
+      done();
+    })
+    .catch(err => {
+      console.log(err.text);
+      done();
     });
   });
 });

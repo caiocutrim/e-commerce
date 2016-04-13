@@ -12,6 +12,7 @@ const debug = require('debug')('e-commerce-blue-dev:server');
 const http = require('http');
 const db = require('../configurations/database')(env.dbURI);
 
+require('../configurations/passport');
 console.log(`env variable is ${process.env.NODE_ENV}`);
 /**
  * Get port from environment and store in Express.
@@ -63,9 +64,7 @@ function onError(error) {
     throw error;
   }
 
-  let bind = typeof port === 'string'
-    ? 'Pipe ' + port
-    : 'Port ' + port;
+  let bind = typeof port === 'string' ? 'Pipe ' + port : 'Port ' + port;
 
   // handle specific listen errors with friendly messages
   switch (error.code) {
@@ -88,8 +87,6 @@ function onError(error) {
 
 function onListening() {
   let addr = server.address();
-  let bind = typeof addr === 'string'
-    ? 'pipe ' + addr
-    : 'port ' + addr.port;
+  let bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }

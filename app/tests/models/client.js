@@ -13,7 +13,7 @@ describe('#CLIENT', () => {
   });
 
   it('should be saved', (done) => {
-    Client({'name':'John Doe'})
+    Client({'username':'John Doe', 'email':'johndoe@example.com', 'password': '13453ea4'})
     .save(done)
     .then((result) => {
       expect(result.name).should.be.equal('John Doe');

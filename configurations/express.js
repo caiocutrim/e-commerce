@@ -2,6 +2,7 @@
 const express = require('express');
 const favicon = require('serve-favicon');
 const morgan = require('morgan');
+const passport = require('passport');
 const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
 const load = require('express-load');
@@ -22,6 +23,7 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride());
+app.use(passport.initialize());
 app.use(express.static('public'));
 
 load('models', {cwd:'app'})

@@ -5,12 +5,18 @@ module.exports = (app) => {
   let controller = {};
 
   controller.addClient = (req, res) => {
-   Client
-    .create(req.body)
-    .then(result => res.status(200).json(result))
-    .catch(err => res.status(500).json(err));
+  let credentials = {
+    'username': req.body.username,
+    'email': req.body.email
+  };
+   Client.register(Client(credentials), req.body.password, (err, result) => {
+     res.status(200).json(result);
+   });
   };
 
+  controller.loginClient = (req, res) => {
+    res.status(200).json('user authenticated');
+  };
   controller.listClients = (req, res) => {
    Client
     .find()
