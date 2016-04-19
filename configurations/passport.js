@@ -1,22 +1,10 @@
 'use strict';
-const Client = require('../app/models/client')();
-const passport = require('passport');
-const FacebookStrategy = require('passport-facebook').Strategy;
-// const GooglePlusStrategy = require('passport-google-plus').Strategy;
 
+const passport = require('passport');
+const Client = require('../app/models/client')();
+const FacebookStrategy = require('passport-facebook').Strategy;
 
 passport.use(Client.createStrategy());
-
-// passport.use(new GooglePlusStrategy({
-//     clientId: 'YOUR_CLIENT_ID',
-//     clientSecret: 'YOUR_CLIENT_SECRET',
-//     callbackURL: 'http://localhost:3000/auth/googleplus/callback'
-//   },
-//   function(tokens, profile, done) {
-//     // Create or update user, call done() when complete...
-//     done(null, profile, tokens);
-//   }
-// ));
 
 passport.use(new FacebookStrategy({
     clientID: '1365515723474282',

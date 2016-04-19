@@ -2,6 +2,7 @@
 module.exports = (app) => {
 
   let Client = app.models.client;
+
   let controller = {};
 
   controller.addClient = (req, res) => {
